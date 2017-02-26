@@ -78,6 +78,13 @@ def login():
 @login_manager.user_loader
 def load_user(id):
     return UserProfile.query.get(int(id))
+    
+    
+@app.route('/secure-page')
+@login_required
+def secure_page():
+    """Render website's home page."""
+    return render_template('secure_page.html')
 
 ###
 # The functions below should be applicable to all Flask apps.
